@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 // The dates and times..
 
 var today = new Date();
@@ -17,6 +9,7 @@ var date = today.getDate();
 var month = today.getMonth();
 var monthlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var datend;
+var year = today.getFullYear();
 
 //to add th or st etc to the number depending on which number it is
 
@@ -54,10 +47,10 @@ switch (date) {
 	break;
 };
 
-//to put the date in Day, xxth Month format
+//to put the date in Day, xxth Month Year format
 
 var el = document.getElementById("dayz");
-el.innerHTML = "The date today is: <strong>" + daylist[day] + ", " + datend + " " + monthlist[month] + "</strong>";
+el.innerHTML = "The date today is: <strong>" + daylist[day] + ", " + datend + " " + monthlist[month] + " " + year + "</strong>";
 
 // to add a zero to the minutes if the minutes are under 10. Otherwise it would show 17:0 and not 17:00
 
@@ -84,4 +77,67 @@ if (hours > 12) {
 	};
 
 var el3 = document.getElementById("othertime");
-el3.innerHTML = "Or if you would prefer it in the 12 hour format, the time is: <strong>" + twelvetime + "</strong>";
+el3.innerHTML = "Or in the 12 hour format, the time is: <strong>" + twelvetime + "</strong>";
+
+// Random number generator
+/*
+// original solution
+
+var randomNumber;
+var el4;
+
+function pickaNumber() {
+	var randomNumber = Math.floor((Math.random() * 10) + 1);
+	var el4 = document.getElementById("number");
+	el4.innerHTML = randomNumber;
+};
+
+var el5 = document.getElementById("randomiser");
+el5.onclick = pickaNumber;
+
+*/
+
+//new solution with event listener - puts number in button
+
+var el4 = document.getElementById("randomiser");
+var randomNumber;
+
+function pickaNumber() {
+	var randomNumber = Math.floor((Math.random() * 10) + 1);
+	el4.innerHTML = '<p style="font-size: 50px">' + randomNumber + '</p>';
+};
+	
+el4.addEventListener('click', pickaNumber, false);
+
+// Area of a box
+
+// hide form until start button is clicked
+var fullForm = document.getElementById("formFields");
+fullForm.style.display = 'none';
+
+var startButton = document.getElementById("toStart");
+
+function showForm(){
+	fullForm.style.display = '';
+	startButton.style.display = 'none';
+};
+
+startButton.onclick = showForm;
+
+// calculate area of box
+
+function calculateArea(){
+	var length = document.getElementById("lengthEntered").value;
+	var width = document.getElementById("widthEntered").value;
+	var area = length * width;
+	if (isNaN(area)) {
+		document.getElementById("answer").innerHTML = "<p>You didn't enter two numbers. Please try again.</p>"
+	} else {
+		document.getElementById("answer").innerHTML = '<p>The total area is: ' + area + '</p>';
+	};
+};
+
+document.getElementById("totalArea").onclick = calculateArea;
+
+
+
