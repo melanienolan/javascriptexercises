@@ -141,3 +141,21 @@ document.getElementById("totalArea").onclick = calculateArea;
 
 
 
+// fizzbuzz
+
+var el7= document.getElementById("fizzbuzz");
+var msg = "";
+
+for (i = 1; i <= 100; i++) {
+	if ((i % 3 == 0) && (i % 5 == 0)) {
+		msg += "fizzbuzz <br>";
+	} else if (i % 3 == 0) {
+		msg += "fizz <br>";
+	} else if (i % 5 == 0) {
+		msg += "buzz <br>";
+	} else {
+		msg += i + "<br>";
+	};
+};
+
+el7.innerHTML = msg;

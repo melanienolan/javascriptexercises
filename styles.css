@@ -80,7 +80,6 @@ h4 {
 	border-radius: 28px;
 	display: block;
 	margin: 50px auto;
-	vertical-align: middle;
 }
 
 #number {
@@ -91,7 +90,12 @@ h4 {
 #calculate {
 	display: flex;
 }
-#answer {
-	
-	
+.output {
+	overflow: auto;
+	width: 50%;
+	height: 130px;
+	margin: auto;
+	margin-top: 20px;
+	background-color: white;
+	text-align: center;
 }
